@@ -30,8 +30,15 @@ class Pizza
 
     /**
      * @var Collection
+     * @ORM\ManyToMany (targetEntity = IngredientPizza::class, cascade = {"persist", "remove"}, orphanRemoval = true)
+     * @ORM\JoinTable (name = "pizza_ingredient",
+     * joinColumns = {@ORM\JoinColumn (name = "pizza_id", referencedColumnName = "id_pizza", onDelete = "cascade")},
+     * inverseJoinColumns = {@ORM\JoinColumn (name = "ingredient_id", referencedColumnName = "id_ingredient_pizza", unique = true)}
+     *)
+     * /
      */
     private Collection $quantiteIngredients;
+
 
     /**
      * Constructor
@@ -105,4 +112,7 @@ class Pizza
     {
         return $this->quantiteIngredients;
     }
+
+
+
 }

@@ -26,7 +26,7 @@ class PizzaRepository extends ServiceEntityRepository
      * @param int $pizzaId
      * @return Pizza
      */
-    public function findPizzaAvecDetailComplet($pizzaId): Pizza
+    public function findPizzaAvecDetailComplet(int $pizzaId): Pizza
     {
         // test si l'id de la pizza est bien un nombre supérieur à 0
         if (!is_numeric($pizzaId) || $pizzaId <= 0) {

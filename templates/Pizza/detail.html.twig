@@ -1,9 +1,18 @@
 {% extends "base.html.twig" %}
 
-{% block title %}{% endblock %}
+{% block title %}Détail de la pizza{% endblock %}
 
-{% block titrePage %}{% endblock %}
+{% block titrePage %}Les détails{% endblock %}
+
 
 {% block body %}
-    Le détail de la pizza sélectionnée
+    <div class="tp-main-body">
+        <h2>{{ pizza.nom }}</h2>
+        <h4>Cout de fabrication: {{ cout }}</h4>
+        <h4>Ingrédients:</h4>
+        {% for ingredients in ingredientPizza %}
+            {{ ingredients.ingredient.nom }}
+            {% if not loop.last %}, {% else %}.{% endif %}
+        {% endfor %}
+    </div>
 {% endblock %}

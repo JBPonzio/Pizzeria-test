@@ -18,7 +18,7 @@ class PizzaioloController extends AbstractController
     /**
      * @Route("/pizzaiolos/disponibles")
      *
-     * @param PizzeriaDao $pizzaioloDao
+     * @param PizzaioloDao $pizzaioloDao
      *
      * @return Response
      */

@@ -41,6 +41,11 @@ class IngredientPizza
     private Ingredient $ingredient;
 
     /**
+     *
+     */
+    private Pizza $pizza;
+
+    /**
      * @param float $grammes
      * @return float
      */
@@ -102,6 +107,18 @@ class IngredientPizza
     public function setIngredient(Ingredient $ingredient): IngredientPizza
     {
         $this->ingredient = $ingredient;
+
+        return $this;
+    }
+
+    public function getPizza(): ?Pizza
+    {
+        return $this->pizza;
+    }
+
+    public function setPizza(?Pizza $pizza): self
+    {
+        $this->pizza = $pizza;
 
         return $this;
     }

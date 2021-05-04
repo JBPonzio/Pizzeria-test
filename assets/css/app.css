@@ -3,7 +3,7 @@ body, html {
 }
 
 body {
-    background: url("/images/background.jpg") no-repeat fixed;
+
     margin: 0;
     display: flex;
     flex-direction: column;

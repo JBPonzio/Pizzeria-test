@@ -7,6 +7,7 @@
     <script src="https://use.fontawesome.com/7e065ddf26.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Exo|Indie+Flower" rel="stylesheet">
     {{ encore_entry_link_tags('app') }}
+    <!-- Latest compiled and minified CSS -->
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
 </head>
 <body>
@@ -38,6 +39,7 @@
         {% block body %}{% endblock %}
     </div>
 </div>
-{% block javascripts %}{% endblock %}
+{% block javascripts %} {% endblock %}
+{{ encore_entry_script_tags('app') }}
 </body>
 </html>

@@ -1,1 +1,33 @@
 
+{% extends "base.html.twig" %}
+
+{% block stylesheets %}<link rel="stylesheet" href="assets/css/app.css">{% endblock %}
+{% block title %}La carte{% endblock %}
+
+{% block titrePage %}La carte de {{ pizzeria.nom }}{% endblock %}
+
+{% block body %}
+    <div class="tp-main-body">
+        <table>
+            <thead>
+                <tr>
+                    <th> Pizza </th>
+                    <th> Prix </th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for element in liste %}
+                    <tr>
+                        <td> {{ element.nom }}</td>
+                        <td> {{ element.prix }}</td>
+                        <td>
+                            <a href="#" class="tp-icone-blk">
+                                <i class="fa fa-phone" aria-hidden="true" class="tp-icone-blk"></i>
+                            </a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

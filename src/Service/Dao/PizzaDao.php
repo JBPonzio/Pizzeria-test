@@ -39,6 +39,7 @@ class PizzaDao
      * @param int $pizzaId
      *
      * @return Pizza
+     * @throws \Exception
      */
     public function getDetailPizza(int $pizzaId): Pizza
     {

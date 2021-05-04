@@ -6,6 +6,8 @@ namespace App\Repository;
 
 use App\Entity\Pizzeria;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\NonUniqueResultException;
+use Doctrine\ORM\NoResultException;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -35,9 +37,28 @@ class PizzeriaRepository extends ServiceEntityRepository
      * @param int $pizzeriaId
      * @return Pizzeria
      */
-    public function findCartePizzeria($pizzeriaId): Pizzeria
+    public function findCartePizzeria(int $pizzeriaId): Pizzeria
     {
-        // TODO: implémenter la méthode pour trouver la carte d'une pizzéria
-        throw new \Exception("The method ".__METHOD__." isn't implemented");
+        // test si l'id de la pizza est bien un nombre supérieur à 0
+        if (!is_numeric($pizzeriaId) || $pizzeriaId <= 0) {
+            throw new \Exception("Impossible de d'obtenir le détail de la pizza ({$pizzeriaId}).");
+        }
+        // création du query builder
+        $qb = $this->createQueryBuilder("p");
+
+        //Création du query
+        $qb
+            ->addSelect(['piz','qte','ing'])
+            ->innerJoin('p.pizzas','piz')
+            ->innerJoin('piz.quantiteIngredients','qte')
+            ->innerJoin('qte.ingredient','ing')
+            ->where("p.id = :idPizzeria")
+            ->setParameter("idPizzeria", $pizzeriaId);
+
+        //Execution du query
+        return $qb->getQuery()->getSingleResult();
+
+
+
     }
 }

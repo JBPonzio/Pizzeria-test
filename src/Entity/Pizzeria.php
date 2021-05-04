@@ -43,13 +43,29 @@ class Pizzeria
 
     /**
      * @var Collection
+     * @ORM\ManyToMany(targetEntity=Pizza::class)
+     * @ORM\JoinTable(name="pizzeria_pizza",
+     *      joinColumns={
+     *     @ORM\JoinColumn(name="pizzeria_id",
+     *     referencedColumnName="id_pizzeria")},
+     *      inverseJoinColumns={
+     *     @ORM\JoinColumn(name="pizza_id",
+     *     referencedColumnName="id_pizza")}
+     *      )
      */
     private Collection $pizzas;
 
     /**
      * @var Collection
+     * @ORM\OneToMany(targetEntity=Pizzaiolo::class, mappedBy="employeur")
+     * @ORM\JoinColumn(
+     *     name="pizzaiolo_id",
+     *     referencedColumnName="id_pizzaiolo"
+     * )
      */
     private Collection $pizzaiolos;
+
+
 
     /**
      * Constructor
@@ -58,6 +74,7 @@ class Pizzeria
     {
         $this->pizzas = new ArrayCollection();
         $this->pizzaiolos = new ArrayCollection();
+
     }
 
     /**
@@ -189,4 +206,6 @@ class Pizzeria
     {
         return $this->pizzaiolos;
     }
+
+
 }

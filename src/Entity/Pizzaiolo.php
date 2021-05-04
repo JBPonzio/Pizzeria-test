@@ -40,16 +40,14 @@ class Pizzaiolo
 
     /**
      * @var Pizzeria
-     * @ORM\ManyToOne(
-     *     targetEntity="App\Entity\Pizzeria",
-     *     inversedBy="pizzaiolos"
-     * )
+     * @ORM\ManyToOne(targetEntity=Pizzeria::class, inversedBy="pizzaiolos")
      * @ORM\JoinColumn(
      *     name="pizzeria_id",
      *     referencedColumnName="id_pizzeria"
      * )
      */
     private Pizzeria $employeur;
+
 
     /**
      * @return int
@@ -145,4 +143,6 @@ class Pizzaiolo
 
         return $this;
     }
+
+
 }
